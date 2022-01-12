@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+  </head>
+  <style>
+    .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: goldenrod;
+    }
+    nav {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    nav a {
+      position: relative;
+      margin: 20px 5px;
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      font-family: consolas;
+    }
+    #marker {
+      position: absolute;
+      left: 0;
+      height: 30px;
+      width: 0;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.2);
+      bottom: 10px;
+      transition: 0.8s;
+      border-radius: 4px;
+    }
+    @media (max-width: 360px) {
+      nav {
+        flex-direction: column;
+      }
+      nav a {
+        display: block;
+      }
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <nav>
+        <div id="marker"></div>
+        <ul>
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Our Service</a>
+          <a href="#">Contact</a>
+          <a href="#">Call us</a>
+        </ul>
+      </nav>
+    </div>
+    <script>
+      let marker = document.querySelector('#marker');
+      let item = document.querySelectorAll('nav a');
+      function indecator(e) {
+        marker.style.left = e.offsetLeft - 5 + 'px';
+        marker.style.width = e.offsetWidth + 8 + 'px';
+      }
+      item.forEach((link) => {
+        link.addEventListener('mouseover', (e) => {
+          indecator(e.target);
+        });
+      });
+      console.log(window)
+    </script>
+  </body>
+</html>
